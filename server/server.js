@@ -78,7 +78,7 @@ app.post('/submitForm', (req, res) => {
         }
     }
 
-    const today = moment().format("dddd, MMMM Do YYYY");
+    const today = moment().format("dddd, MMMM Do YYYY").tz("America/Denver");
     const request = new OutOfOffice({ date: date, fromTime: fromTime, toTime: toTime, reason, emailSent: today == date ? true : false });
 
     request.save(err => {
