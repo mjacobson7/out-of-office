@@ -1,0 +1,17 @@
+body {
+    width: 400px;
+    height: auto;
+    padding: 10px;
+}
+
+#currentRequests {
+    display: none;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+#nav-menu {
+    margin-bottom: 10px;
+}

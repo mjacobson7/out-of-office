@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <h3>Out-of-Office Bot</h3>
+
+    <ul id="nav-menu" class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" id="newRequestsNav">New Request</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="currRequestsNav">Current Requests</a>
+        </li>
+    </ul>
+
+
+    <ul class="list-group" id="currentRequests"></ul>
+
+
+    <form id="form" action="http://localhost:8900/submitForm" method="post">
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input required type="date" class="form-control" name="date" id="date" aria-describedby="date">
+        </div>
+
+        <div class="form-group">
+            <label for="fromTime">From</label>
+            <input required type="time" class="form-control" name="fromTime" id="fromTime" aria-describedby="fromTime">
+        </div>
+
+        <div class="form-group">
+            <label for="toTime">To</label>
+            <input required type="time" class="form-control" name="toTime" id="toTime" aria-describedby="toTime">
+        </div>
+
+        <div class=form-group>
+            <label for="reason">Reason</label>
+            <textarea required class="form-control" name="reason" id="reason" rows="2"></textarea>
+        </div>
+
+        <button id="button" type="submit" class="btn btn-primary btn-lg btn-block disabled">Submit</button>
+
+    </form>
+
+</body>
+<script src="./app.js"></script>
+
+</html>
