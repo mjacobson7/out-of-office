@@ -6,7 +6,7 @@ const sgMail = require('@sendgrid/mail');
 const mongoose = require('mongoose');
 const secrets = require('./secrets');
 const OutOfOffice = require('./OutOfOffice');
-const moment = require('moment');
+const moment = require('moment-timezone');
 require('./cron');
 
 
@@ -38,7 +38,7 @@ app.put('/cancelRequest/:id', (req, res) => {
             subject: 'CANCELLED - Out of Office Request',
             html:
                 `<strong>***This is an automated message***</strong>
-                <h1><strong>The reqeuest below has been cancelled - please disregard</strong></h1>
+                <h1><strong>The request below has been cancelled - please disregard</strong></h1>
                 <p>Max has requested to be excused on ${request.date} from ${request.fromTime} to ${request.toTime}</p>
                 <div style="border: 2px solid #ccc; padding: 20px; width: 40%;">
                 <h4 style="margin: 0px;">REASON</h4>
@@ -59,6 +59,7 @@ app.put('/cancelRequest/:id', (req, res) => {
 
 
 app.post('/submitForm', (req, res) => {
+    console.log('submitted!')
     let { date, fromTime, toTime, reason } = req.body;
 
     date = moment(date).format("dddd, MMMM Do YYYY");
@@ -78,7 +79,7 @@ app.post('/submitForm', (req, res) => {
         }
     }
 
-    const today = moment().format("dddd, MMMM Do YYYY").tz("America/Denver");
+    const today = moment().tz("America/Denver").format("dddd, MMMM Do YYYY");
     const request = new OutOfOffice({ date: date, fromTime: fromTime, toTime: toTime, reason, emailSent: today == date ? true : false });
 
     request.save(err => {

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('form');
-
+    // http://104.236.155.155:8900
 
     document.getElementById('currRequestsNav').addEventListener('click', function () {
         form.style.display = 'none';
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.add('active')
         document.getElementById('newRequestsNav').classList.remove('active')
 
-        fetch('http://localhost:8900/getCurrentRequests')
+        fetch('http://104.236.155.155:8900/getCurrentRequests')
             .then(function (response) {
                 return response.json();
             })
@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <input class="requestId" type="hidden" value="${request._id}" />
                             <p>Date: ${request.date}</p>
                             <p>From: ${request.fromTime}</p>
-                            <p>To: ${request.toTime}</p><p>Reason: ${request.reason}</p>
+                            <p>To: ${request.toTime}</p>
+                            <p style="word-wrap: break-word;">Reason: ${request.reason}</p>
                             <button type="button" class="cancelRequest btn btn-danger btn-sm">Cancel Request</button>`;
                         li.classList.add('list-group-item')
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         cancelRequest[i].addEventListener('click', function () {
                             const requestId = this.parentNode.getElementsByClassName('requestId')[0].value;
                             var xhr = new XMLHttpRequest();
-                            xhr.open('PUT', `http://localhost:8900/cancelRequest/${requestId}`);
+                            xhr.open('PUT', `http://104.236.155.155:8900/cancelRequest/${requestId}`);
                             xhr.send(null);
                             document.getElementById('currentRequests').removeChild(this.parentNode);
                         })

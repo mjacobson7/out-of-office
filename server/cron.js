@@ -1,14 +1,13 @@
 const cron = require('node-cron');
 const OutOfOffice = require('./OutOfOffice');
-const moment = require('moment');
+const moment = require('moment-timezone');
 const sgMail = require('@sendgrid/mail');
 const secrets = require('./secrets');
 
-// cron.schedule('0 8 * * *', () => {
-cron.schedule('* * * * *', () => {
+cron.schedule('0 8 * * *', () => {
     OutOfOffice.find({ emailSent: false }, (err, requests) => {
-        if(err) throw err;
-        let today = moment().format("dddd, MMMM Do YYYY");
+        if (err) throw err;
+        const today = moment().tz("America/Denver").format("dddd, MMMM Do YYYY");
 
         requests.map(request => {
             if (today === request.date && !request.emailSent) {

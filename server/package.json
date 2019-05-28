@@ -9,6 +9,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.25",
     "mongoose": "^5.5.11",
     "node-cron": "^2.0.3",
     "nodemailer": "^6.1.1"
