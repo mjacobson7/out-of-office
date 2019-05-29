@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById('currentRequests').removeChild(this.parentNode);
                         })
                     }
+                } else {
+                    const p = document.createElement('p');
+                    p.style.textAlign = 'center';
+                    p.style.padding = '10px'
+                    p.innerText = 'No pending time off';
+                    document.getElementById('currentRequests').appendChild(p)
                 }
             });
     })

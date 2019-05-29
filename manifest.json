@@ -1,6 +1,6 @@
 {
     "name": "Out of Office",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Auto email your boss when you need to leave the office early",
     "permissions": [
         "storage"

@@ -4,7 +4,7 @@ const moment = require('moment-timezone');
 const sgMail = require('@sendgrid/mail');
 const secrets = require('./secrets');
 
-cron.schedule('0 8 * * *', () => {
+cron.schedule('0 7 * * *', () => {
     OutOfOffice.find({ emailSent: false }, (err, requests) => {
         if (err) throw err;
         const today = moment().tz("America/Denver").format("dddd, MMMM Do YYYY");
